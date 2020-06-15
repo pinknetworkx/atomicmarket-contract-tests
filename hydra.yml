@@ -1,0 +1,19 @@
+contracts:
+  atomicassets:
+    abi: contract_source/atomicassets.abi
+    fixturesDir: tests/fixtures/atomicassets
+    name: atomicassets
+    wasm: contract_source/atomicassets.wasm
+
+  atomicmarket:
+    abi: contract_source/atomicmarket.abi
+    fixturesDir: tests/fixtures/atomicmarket
+    name: atomicmarket
+    wasm: contract_source/atomicmarket.wasm
+
+  delphioracle:
+    abi: contract_source/delphioracle.abi
+    fixturesDir: tests/fixtures/delphioracle
+    name: delphioracle
+    wasm: contract_source/delphioracle.wasm
+options: null

@@ -1,0 +1,25 @@
+{
+  "waxpusd": [
+    {
+      "id": "0",
+      "owner": "pink.gg",
+      "value": "490",
+      "median": "485",
+      "timestamp": 0
+    },
+    {
+      "id": "1",
+      "owner": "pink.gg",
+      "value": "490",
+      "median": "495",
+      "timestamp": 0
+    },
+    {
+      "id": "2",
+      "owner": "pink.gg",
+      "value": "510",
+      "median": "500",
+      "timestamp": 0
+    }
+  ]
+}

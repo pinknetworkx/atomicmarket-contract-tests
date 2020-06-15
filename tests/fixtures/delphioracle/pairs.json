@@ -1,0 +1,38 @@
+{
+  "delphioracle": [
+    {
+      "active": true,
+      "bounty_awarded": true,
+      "bounty_edited_by_custodians": false,
+      "proposer": "nate",
+      "name": "waxpbtc",
+      "bounty_amount": "0.00000000 WAX",
+      "approving_custodians": ["alohaeosprod"],
+      "approving_oracles": [],
+      "base_symbol": "8,WAXP",
+      "base_type": 4,
+      "base_contract": "",
+      "quote_symbol": "8,BTC",
+      "quote_type": 2,
+      "quote_contract": "",
+      "quoted_precision": 8
+    },
+    {
+      "active": true,
+      "bounty_awarded": true,
+      "bounty_edited_by_custodians": false,
+      "proposer": "nate",
+      "name": "waxpusd",
+      "bounty_amount": "0.00000000 WAX",
+      "approving_custodians": ["alohaeosprod"],
+      "approving_oracles": [],
+      "base_symbol": "8,WAXP",
+      "base_type": 4,
+      "base_contract": "",
+      "quote_symbol": "2,USD",
+      "quote_type": 1,
+      "quote_contract": "",
+      "quoted_precision": 4
+    }
+  ]
+}
