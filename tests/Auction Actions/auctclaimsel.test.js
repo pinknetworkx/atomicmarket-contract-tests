@@ -46,7 +46,7 @@ beforeEach(async () => {
 
     await atomicassets.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: "colauthor",
             allow_notify: true,
             authorized_accounts: [],
@@ -56,7 +56,7 @@ beforeEach(async () => {
         }]
     });
     await atomicassets.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -74,7 +74,7 @@ test("claim auction", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -99,7 +99,7 @@ test("claim auction", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -126,7 +126,7 @@ test("claim auction", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -155,7 +155,7 @@ test("claim auction when buyer has already claimed", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -180,7 +180,7 @@ test("claim auction when buyer has already claimed", async () => {
                 claimed_by_buyer: true,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -233,7 +233,7 @@ test("claim auction with custom marketplaces", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -258,7 +258,7 @@ test("claim auction with custom marketplaces", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "mymarket1",
                 taker_marketplace: "mymarket2",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -285,7 +285,7 @@ test("claim auction with custom marketplaces", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "mymarket1",
             taker_marketplace: "mymarket2",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -318,7 +318,7 @@ test("claim auction with minimal bid", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -343,7 +343,7 @@ test("claim auction with minimal bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -370,7 +370,7 @@ test("claim auction with minimal bid", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -391,7 +391,7 @@ test("claim auction with very small bid", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -416,7 +416,7 @@ test("claim auction with very small bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -443,7 +443,7 @@ test("claim auction with very small bid", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -475,7 +475,7 @@ test("throw when the auction is not active", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -500,7 +500,7 @@ test("throw when the auction is not active", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -519,7 +519,7 @@ test("throw when the auction is not finished yet", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -544,7 +544,7 @@ test("throw when the auction is not finished yet", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -563,7 +563,7 @@ test("throw when the auction does not have any bids", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -588,7 +588,7 @@ test("throw when the auction does not have any bids", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -607,7 +607,7 @@ test("throw without authorization from the auctions seller", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -632,7 +632,7 @@ test("throw without authorization from the auctions seller", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]

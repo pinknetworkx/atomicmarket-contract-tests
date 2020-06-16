@@ -83,7 +83,7 @@ beforeEach(async () => {
 
     await atomicassets.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: "colauthor",
             allow_notify: true,
             authorized_accounts: [],
@@ -93,7 +93,7 @@ beforeEach(async () => {
         }]
     });
     await atomicassets.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -111,7 +111,7 @@ test("purchase direct sale of single asset", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -152,7 +152,7 @@ test("purchase direct sale of single asset", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -191,7 +191,7 @@ test("purchase direct sale of single asset", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -209,7 +209,7 @@ test("purchase sale when buyer has more balance than sale price", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -250,7 +250,7 @@ test("purchase sale when buyer has more balance than sale price", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -293,7 +293,7 @@ test("purchase sale when buyer has more balance than sale price", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -311,7 +311,7 @@ test("purchase direct sale of multiple assets", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -321,7 +321,7 @@ test("purchase direct sale of multiple assets", async () => {
             },
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -331,7 +331,7 @@ test("purchase direct sale of multiple assets", async () => {
             },
             {
                 asset_id: "1099511627778",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -372,7 +372,7 @@ test("purchase direct sale of multiple assets", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -411,7 +411,7 @@ test("purchase direct sale of multiple assets", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -421,7 +421,7 @@ test("purchase direct sale of multiple assets", async () => {
         },
         {
             asset_id: "1099511627777",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -431,7 +431,7 @@ test("purchase direct sale of multiple assets", async () => {
         },
         {
             asset_id: "1099511627778",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -449,7 +449,7 @@ test("purchase sale with minimal price", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -490,7 +490,7 @@ test("purchase sale with minimal price", async () => {
                 listing_price: "0.00000001 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -521,7 +521,7 @@ test("purchase sale with minimal price", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -539,7 +539,7 @@ test("purchase sale with very small price", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -580,7 +580,7 @@ test("purchase sale with very small price", async () => {
                 listing_price: "0.00000050 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -615,7 +615,7 @@ test("purchase sale with very small price", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -633,7 +633,7 @@ test("purchase delphi sale", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -674,7 +674,7 @@ test("purchase delphi sale", async () => {
                 listing_price: "5.00 USD",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -713,7 +713,7 @@ test("purchase delphi sale", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -731,7 +731,7 @@ test("purchase sale with inverted delphi price", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -782,7 +782,7 @@ test("purchase sale with inverted delphi price", async () => {
                 listing_price: "5.00 RUSD",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -821,7 +821,7 @@ test("purchase sale with inverted delphi price", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -839,7 +839,7 @@ test("purchase sale with custom marketplaces", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -893,7 +893,7 @@ test("purchase sale with custom marketplaces", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "mymarket1",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -936,7 +936,7 @@ test("purchase sale with custom marketplaces", async () => {
     expect(user2_assets).toEqual([
         {
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -964,7 +964,7 @@ test("throw when trying to purchase own sale", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1005,7 +1005,7 @@ test("throw when trying to purchase own sale", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1040,7 +1040,7 @@ test("throw when sale is not active yet", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1062,7 +1062,7 @@ test("throw when seller cancelled atomicassets offer", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1090,7 +1090,7 @@ test("throw when seller cancelled atomicassets offer", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1112,7 +1112,7 @@ test("throw when purchasing direct sale and delphi median is not 0", async () =>
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1153,7 +1153,7 @@ test("throw when purchasing direct sale and delphi median is not 0", async () =>
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1175,7 +1175,7 @@ test("throw when marketplace is invalid", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1216,7 +1216,7 @@ test("throw when marketplace is invalid", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1238,7 +1238,7 @@ test("throw when delphi median is not found", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1279,7 +1279,7 @@ test("throw when delphi median is not found", async () => {
                 listing_price: "5.00 USD",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1301,7 +1301,7 @@ test("throw when buyer does not have a balance row", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1335,7 +1335,7 @@ test("throw when buyer does not have a balance row", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1357,7 +1357,7 @@ test("throw when buyer's balance is not sufficient", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1398,7 +1398,7 @@ test("throw when buyer's balance is not sufficient", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1420,7 +1420,7 @@ test("throw when buyer only has a balance for another token", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1461,7 +1461,7 @@ test("throw when buyer only has a balance for another token", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -1483,7 +1483,7 @@ test("throw without authorization from buyer", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -1524,7 +1524,7 @@ test("throw without authorization from buyer", async () => {
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]

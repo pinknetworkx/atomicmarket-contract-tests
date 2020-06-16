@@ -53,7 +53,7 @@ test("make initial bid equal to minimum bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -83,7 +83,7 @@ test("make initial bid equal to minimum bid", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -121,7 +121,7 @@ test("make initial bid higher than minimum bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -151,7 +151,7 @@ test("make initial bid higher than minimum bid", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -187,7 +187,7 @@ test("throw when initial bid is less than starting bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -237,7 +237,7 @@ test("make initial bid with marketplace", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -267,7 +267,7 @@ test("make initial bid with marketplace", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "mymarket1",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -305,7 +305,7 @@ test("outbid someone by exactly 10%", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -335,7 +335,7 @@ test("outbid someone by exactly 10%", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -377,7 +377,7 @@ test("outbid someone by more than 10%", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -407,7 +407,7 @@ test("outbid someone by more than 10%", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -447,7 +447,7 @@ test("throw when outbid is less than current bid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -486,7 +486,7 @@ test("throw when outbid increase is less than the minimum specified in config", 
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -536,7 +536,7 @@ test("outbid someone with a marketplace", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -566,7 +566,7 @@ test("outbid someone with a marketplace", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "mymarket1",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -625,7 +625,7 @@ test("throw when trying to bid on own auction", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -664,7 +664,7 @@ test("throw the seller has not transferred the assets to the market yet", async 
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -703,7 +703,7 @@ test("throw when the auction is already finished", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -742,7 +742,7 @@ test("throw when the bid uses a different symbol than the auction", async () => 
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -781,7 +781,7 @@ test("throw when the specified market does not exist", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -820,7 +820,7 @@ test("throw without authorization from buyer", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]

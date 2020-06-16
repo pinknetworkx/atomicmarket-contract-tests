@@ -61,7 +61,7 @@ beforeEach(async () => {
 
     await atomicassets.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: user1.accountName,
             allow_notify: true,
             authorized_accounts: [],
@@ -71,7 +71,7 @@ beforeEach(async () => {
         }]
     });
     await atomicassets.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -86,7 +86,7 @@ test("transfer single asset for auction", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -110,7 +110,7 @@ test("transfer single asset for auction", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -140,7 +140,7 @@ test("transfer single asset for auction", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -151,7 +151,7 @@ test("transfer multiple assets for auction", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -161,7 +161,7 @@ test("transfer multiple assets for auction", async () => {
             },
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -171,7 +171,7 @@ test("transfer multiple assets for auction", async () => {
             },
             {
                 asset_id: "1099511627778",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -196,7 +196,7 @@ test("transfer multiple assets for auction", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -226,7 +226,7 @@ test("transfer multiple assets for auction", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -237,7 +237,7 @@ test("transfer assets for an auction for which an equal auction by another selle
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -262,7 +262,7 @@ test("transfer assets for an auction for which an equal auction by another selle
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             },
             {
@@ -277,7 +277,7 @@ test("transfer assets for an auction for which an equal auction by another selle
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -307,7 +307,7 @@ test("transfer assets for an auction for which an equal auction by another selle
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         },
         {
@@ -322,7 +322,7 @@ test("transfer assets for an auction for which an equal auction by another selle
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -333,7 +333,7 @@ test("transfer asset when other unrelated auction exist", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -345,7 +345,7 @@ test("transfer asset when other unrelated auction exist", async () => {
         "user2": [
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -370,7 +370,7 @@ test("transfer asset when other unrelated auction exist", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             },
             {
@@ -385,7 +385,7 @@ test("transfer asset when other unrelated auction exist", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -415,7 +415,7 @@ test("transfer asset when other unrelated auction exist", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         },
         {
@@ -430,7 +430,7 @@ test("transfer asset when other unrelated auction exist", async () => {
             claimed_by_buyer: false,
             maker_marketplace: "",
             taker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -441,7 +441,7 @@ test("throw when no auction was announced", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -468,7 +468,7 @@ test("throw when only announced auction is from a different seller", async () =>
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -493,7 +493,7 @@ test("throw when only announced auction is from a different seller", async () =>
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -515,7 +515,7 @@ test("throw when memo is invalid", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -540,7 +540,7 @@ test("throw when memo is invalid", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -578,7 +578,7 @@ test("throw on notifications from fake atomicassets contract", async () => {
 
     await atomicfake.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: user1.accountName,
             allow_notify: true,
             authorized_accounts: [],
@@ -588,7 +588,7 @@ test("throw on notifications from fake atomicassets contract", async () => {
         }]
     });
     await atomicfake.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -602,7 +602,7 @@ test("throw on notifications from fake atomicassets contract", async () => {
     await atomicfake.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -626,7 +626,7 @@ test("throw on notifications from fake atomicassets contract", async () => {
                 claimed_by_buyer: false,
                 maker_marketplace: "",
                 taker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]

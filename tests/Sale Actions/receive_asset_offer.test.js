@@ -61,7 +61,7 @@ beforeEach(async () => {
 
     await atomicassets.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: user1.accountName,
             allow_notify: true,
             authorized_accounts: [],
@@ -71,7 +71,7 @@ beforeEach(async () => {
         }]
     });
     await atomicassets.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -86,7 +86,7 @@ test("send offer for single asset sale", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -106,7 +106,7 @@ test("send offer for single asset sale", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -133,7 +133,7 @@ test("send offer for single asset sale", async () => {
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -144,7 +144,7 @@ test("send offer for multiple asset sale", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -154,7 +154,7 @@ test("send offer for multiple asset sale", async () => {
             },
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -164,7 +164,7 @@ test("send offer for multiple asset sale", async () => {
             },
             {
                 asset_id: "1099511627778",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -185,7 +185,7 @@ test("send offer for multiple asset sale", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -212,7 +212,7 @@ test("send offer for multiple asset sale", async () => {
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -223,7 +223,7 @@ test("send offer for a sale for which an equal sale by another seller exists", a
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -244,7 +244,7 @@ test("send offer for a sale for which an equal sale by another seller exists", a
                 listing_price: "20.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             },
             {
@@ -255,7 +255,7 @@ test("send offer for a sale for which an equal sale by another seller exists", a
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -282,7 +282,7 @@ test("send offer for a sale for which an equal sale by another seller exists", a
             listing_price: "20.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         },
         {
@@ -293,7 +293,7 @@ test("send offer for a sale for which an equal sale by another seller exists", a
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -304,7 +304,7 @@ test("send offer when other unrelated sales exist", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -316,7 +316,7 @@ test("send offer when other unrelated sales exist", async () => {
         "user2": [
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -326,7 +326,7 @@ test("send offer when other unrelated sales exist", async () => {
             },
             {
                 asset_id: "1099511627778",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -347,7 +347,7 @@ test("send offer when other unrelated sales exist", async () => {
                 listing_price: "6.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             },
             {
@@ -358,7 +358,7 @@ test("send offer when other unrelated sales exist", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             },
             {
@@ -369,7 +369,7 @@ test("send offer when other unrelated sales exist", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -396,7 +396,7 @@ test("send offer when other unrelated sales exist", async () => {
             listing_price: "6.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         },
         {
@@ -407,7 +407,7 @@ test("send offer when other unrelated sales exist", async () => {
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         },
         {
@@ -418,7 +418,7 @@ test("send offer when other unrelated sales exist", async () => {
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);
@@ -429,7 +429,7 @@ test("throw when asking for assets back in offer", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -441,7 +441,7 @@ test("throw when asking for assets back in offer", async () => {
         "atomicmarket": [
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -462,7 +462,7 @@ test("throw when asking for assets back in offer", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -485,7 +485,7 @@ test("throw when no sale was announced", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -513,7 +513,7 @@ test("throw when no sale was announced, but a bigger sale containing the same as
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -523,7 +523,7 @@ test("throw when no sale was announced, but a bigger sale containing the same as
             },
             {
                 asset_id: "1099511627777",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -544,7 +544,7 @@ test("throw when no sale was announced, but a bigger sale containing the same as
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -567,7 +567,7 @@ test("throw when only announced sale is from a different seller", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -588,7 +588,7 @@ test("throw when only announced sale is from a different seller", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -611,7 +611,7 @@ test("throw when an offer for the sale was already created", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -632,7 +632,7 @@ test("throw when an offer for the sale was already created", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -655,7 +655,7 @@ test("throw when memo is invalid", async () => {
         "user1": [
             {
                 asset_id: "1099511627776",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 schema_name: "testschema",
                 template_id: -1,
                 ram_payer: "eosio",
@@ -676,7 +676,7 @@ test("throw when memo is invalid", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -715,7 +715,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
 
     await atomicfake.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: user1.accountName,
             allow_notify: true,
             authorized_accounts: [],
@@ -725,7 +725,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
         }]
     });
     await atomicfake.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -739,7 +739,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
     await atomicfake.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -759,7 +759,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -786,7 +786,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
             maker_marketplace: "",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             collection_fee: 0.05
         }
     ]);

@@ -46,7 +46,7 @@ beforeEach(async () => {
 
     await atomicassets.loadFixtures("collections", {
         "atomicassets": [{
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             author: user1.accountName,
             allow_notify: true,
             authorized_accounts: [],
@@ -56,7 +56,7 @@ beforeEach(async () => {
         }]
     });
     await atomicassets.loadFixtures("schemas", {
-        "testcol": [{
+        "testcollect1": [{
             schema_name: "testschema",
             format: [
                 {name: "name", type: "string"},
@@ -73,7 +73,7 @@ test("cancel sale with active offer", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -106,7 +106,7 @@ test("cancel sale with active offer", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -130,7 +130,7 @@ test("cancel sale without offer", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -149,7 +149,7 @@ test("cancel sale without offer", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -170,7 +170,7 @@ test("cancel sale with cancelled offer", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -190,7 +190,7 @@ test("cancel sale with cancelled offer", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -210,7 +210,7 @@ test("cancel sale with cancelled offer", async () => {
 test("cancel invalid sale without auth (offer cancelled)", async () => {await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -230,7 +230,7 @@ test("cancel invalid sale without auth (offer cancelled)", async () => {await at
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -271,7 +271,7 @@ test("cancel invalid sale without auth - seller does not own asset", async () =>
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
@@ -301,7 +301,7 @@ test("throw when cancelling active sale without auth", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
-            collection_name: "testcol",
+            collection_name: "testcollect1",
             schema_name: "testschema",
             template_id: -1,
             ram_payer: "eosio",
@@ -334,7 +334,7 @@ test("throw when cancelling active sale without auth", async () => {
                 listing_price: "10.00000000 WAX",
                 settlement_symbol: "8,WAX",
                 maker_marketplace: "",
-                collection_name: "testcol",
+                collection_name: "testcollect1",
                 collection_fee: 0.05
             }
         ]
