@@ -31,7 +31,7 @@ beforeEach(async () => {
 test("register market", async () => {
     await atomicmarket.contract.regmarket({
         creator: user1.accountName,
-        marketplace_name: "mymarket"
+        marketplace_name: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -44,7 +44,7 @@ test("register market", async () => {
             creator: "pink.network"
         },
         {
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         }
     ]);
@@ -53,14 +53,14 @@ test("register market", async () => {
 test("register second market of same creator", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [{
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         }]
     });
 
     await atomicmarket.contract.regmarket({
         creator: user1.accountName,
-        marketplace_name: "mymarket2"
+        marketplace_name: "mymarket2222"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -73,11 +73,11 @@ test("register second market of same creator", async () => {
             creator: "pink.network"
         },
         {
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         },
         {
-            marketplace_name: "mymarket2",
+            marketplace_name: "mymarket2222",
             creator: user1.accountName
         }
     ]);
@@ -112,20 +112,20 @@ test("throw when market name is equal to another existing account", async () => 
     }, [{
         actor: user1.accountName,
         permission: "active"
-    }])).rejects.toThrow("Can't create a marketplace with a name of an existing account without its authorization");
+    }])).rejects.toThrow("When the marketplace has the name of an existing account, its authorization is required");
 });
 
 test("throw when market with this name already exists", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [{
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         }]
     });
 
     await expect(atomicmarket.contract.regmarket({
         creator: user1.accountName,
-        marketplace_name: "mymarket"
+        marketplace_name: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -135,7 +135,7 @@ test("throw when market with this name already exists", async () => {
 test("throw without authorization", async () => {
     await expect(atomicmarket.contract.regmarket({
         creator: user1.accountName,
-        marketplace_name: "mymarket"
+        marketplace_name: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"

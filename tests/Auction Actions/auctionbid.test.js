@@ -210,7 +210,7 @@ test("make initial bid with marketplace", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [
             {
-                marketplace_name: "mymarket1",
+                marketplace_name: "mymarket1111",
                 creator: "marketowner1"
             }
         ]
@@ -247,7 +247,7 @@ test("make initial bid with marketplace", async () => {
         bidder: user2.accountName,
         auction_id: "1",
         bid: "50.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"
@@ -266,7 +266,7 @@ test("make initial bid with marketplace", async () => {
             claimed_by_seller: false,
             claimed_by_buyer: false,
             maker_marketplace: "",
-            taker_marketplace: "mymarket1",
+            taker_marketplace: "mymarket1111",
             collection_name: "testcollect1",
             collection_fee: 0.05
         }
@@ -509,7 +509,7 @@ test("outbid someone with a marketplace", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [
             {
-                marketplace_name: "mymarket1",
+                marketplace_name: "mymarket1111",
                 creator: "marketowner1"
             }
         ]
@@ -546,7 +546,7 @@ test("outbid someone with a marketplace", async () => {
         bidder: user2.accountName,
         auction_id: "1",
         bid: "75.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"
@@ -565,7 +565,7 @@ test("outbid someone with a marketplace", async () => {
             claimed_by_seller: false,
             claimed_by_buyer: false,
             maker_marketplace: "",
-            taker_marketplace: "mymarket1",
+            taker_marketplace: "mymarket1111",
             collection_name: "testcollect1",
             collection_fee: 0.05
         }
@@ -596,7 +596,7 @@ test("throw when auction with this id does not exist", async () => {
         bidder: user2.accountName,
         auction_id: "1",
         bid: "75.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"
@@ -635,7 +635,7 @@ test("throw when trying to bid on own auction", async () => {
         bidder: user1.accountName,
         auction_id: "1",
         bid: "75.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -674,7 +674,7 @@ test("throw the seller has not transferred the assets to the market yet", async 
         bidder: user2.accountName,
         auction_id: "1",
         bid: "75.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"
@@ -713,7 +713,7 @@ test("throw when the auction is already finished", async () => {
         bidder: user2.accountName,
         auction_id: "1",
         bid: "75.00000000 WAX",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"
@@ -752,7 +752,7 @@ test("throw when the bid uses a different symbol than the auction", async () => 
         bidder: user2.accountName,
         auction_id: "1",
         bid: "75.0000 KARMA",
-        taker_marketplace: "mymarket1"
+        taker_marketplace: "mymarket1111"
     }, [{
         actor: user2.accountName,
         permission: "active"

@@ -343,7 +343,7 @@ test("announce sale with a marketplace", async () => {
     });
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [{
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         }]
     });
@@ -353,7 +353,7 @@ test("announce sale with a marketplace", async () => {
         asset_ids: ["1099511627776"],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -368,7 +368,7 @@ test("announce sale with a marketplace", async () => {
             offer_id: "-1",
             listing_price: "10.00000000 WAX",
             settlement_symbol: "8,WAX",
-            maker_marketplace: "mymarket",
+            maker_marketplace: "mymarket1111",
             collection_name: "testcollect1",
             collection_fee: 0.05
         }
@@ -482,7 +482,7 @@ test("throw when asset_ids is empty", async () => {
         asset_ids: [],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -509,7 +509,7 @@ test("throw when seller does not own one of the assets", async () => {
         asset_ids: ["1099511627776", "1099511627777"],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -548,7 +548,7 @@ test("throw when one of the assets is not transferable", async () => {
         asset_ids: ["1099511627776"],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -662,7 +662,7 @@ test("throw the seller already announced a sale for the single asset", async () 
         asset_ids: ["1099511627776"],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -726,7 +726,7 @@ test("throw the seller already announced a sale for the multiple assets", async 
         asset_ids: ["1099511627776", "1099511627777", "1099511627778"],
         listing_price: "10.00000000 WAX",
         settlement_symbol: "8,WAX",
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -767,7 +767,9 @@ test("announce sale for asset that has already been announced as part of a bigge
                 sale_counter: "2",
                 auction_counter: "1",
                 minimum_bid_increase: 0.1,
+                minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
+                auction_reset_duration: 120,
                 supported_tokens: [
                     {
                         token_contract: "eosio.token",
@@ -868,7 +870,9 @@ test("announce sale that another account has announced before", async () => {
                 sale_counter: "2",
                 auction_counter: "1",
                 minimum_bid_increase: 0.1,
+                minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
+                auction_reset_duration: 120,
                 supported_tokens: [
                     {
                         token_contract: "eosio.token",

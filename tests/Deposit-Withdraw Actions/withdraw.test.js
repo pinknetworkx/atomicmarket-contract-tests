@@ -57,7 +57,9 @@ test("withdraw all of the only deposited token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -116,7 +118,9 @@ test("withdraw a part of the only deposited token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -178,7 +182,9 @@ test("withdraw all of one of multiple deposited token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -241,7 +247,9 @@ test("withdraw all of a non eosio.token token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -286,7 +294,9 @@ test("throw when withdrawer does not have a balance row", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -315,7 +325,9 @@ test("throw when withdrawer does not have a balance for the token to withdraw", 
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -350,7 +362,9 @@ test("throw when withdrawer has tokens, but less than the withdrawal", async () 
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -398,7 +412,9 @@ test("throw when the withdrawal amount is negative", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},
@@ -446,7 +462,9 @@ test("throw without authorization from owner", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"},

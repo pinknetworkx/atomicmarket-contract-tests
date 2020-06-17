@@ -321,7 +321,7 @@ test("announce auction with a marketplace", async () => {
     });
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [{
-            marketplace_name: "mymarket",
+            marketplace_name: "mymarket1111",
             creator: user1.accountName
         }]
     });
@@ -331,7 +331,7 @@ test("announce auction with a marketplace", async () => {
         asset_ids: ["1099511627776"],
         starting_bid: "10.00000000 WAX",
         duration: 600,
-        maker_marketplace: "mymarket"
+        maker_marketplace: "mymarket1111"
     }, [{
         actor: user1.accountName,
         permission: "active"
@@ -349,7 +349,7 @@ test("announce auction with a marketplace", async () => {
             current_bidder: "",
             claimed_by_seller: false,
             claimed_by_buyer: false,
-            maker_marketplace: "mymarket",
+            maker_marketplace: "mymarket1111",
             taker_marketplace: "",
             collection_name: "testcollect1",
             collection_fee: 0.05
@@ -765,7 +765,9 @@ test("announce auction for asset that has already been announced as part of a bi
                 sale_counter: "1",
                 auction_counter: "2",
                 minimum_bid_increase: 0.1,
+                minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
+                auction_reset_duration: 120,
                 supported_tokens: [
                     {
                         token_contract: "eosio.token",
@@ -878,7 +880,9 @@ test("announce auction that another account has announced before", async () => {
                 sale_counter: "1",
                 auction_counter: "2",
                 minimum_bid_increase: 0.1,
+                minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
+                auction_reset_duration: 120,
                 supported_tokens: [
                     {
                         token_contract: "eosio.token",

@@ -873,11 +873,11 @@ test("purchase sale with custom marketplaces", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [
             {
-                marketplace_name: "mymarket1",
+                marketplace_name: "mymarket1111",
                 creator: "marketowner1"
             },
             {
-                marketplace_name: "mymarket2",
+                marketplace_name: "mymarket2222",
                 creator: "marketowner2"
             }
         ]
@@ -892,7 +892,7 @@ test("purchase sale with custom marketplaces", async () => {
                 offer_id: "1",
                 listing_price: "100.00000000 WAX",
                 settlement_symbol: "8,WAX",
-                maker_marketplace: "mymarket1",
+                maker_marketplace: "mymarket1111",
                 collection_name: "testcollect1",
                 collection_fee: 0.05
             }
@@ -903,7 +903,7 @@ test("purchase sale with custom marketplaces", async () => {
         buyer: user2.accountName,
         sale_id: 1,
         intended_delphi_median: 0,
-        taker_marketplace: "mymarket2"
+        taker_marketplace: "mymarket2222"
     }, [{
         actor: user2.accountName,
         permission: "active"

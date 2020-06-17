@@ -33,7 +33,9 @@ test("add first token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [],
             supported_symbol_pairs: [],
             maker_market_fee: 0.01,
@@ -57,7 +59,9 @@ test("add first token", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"}
         ],
@@ -76,7 +80,9 @@ test("add second token of same contract", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -102,7 +108,9 @@ test("add second token of same contract", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"},
             {token_contract: "eosio.token", token_symbol: "0,SYS"}
@@ -122,7 +130,9 @@ test("add second token of different contract", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -148,7 +158,9 @@ test("add second token of different contract", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"},
             {token_contract: "karmatoken", token_symbol: "4,KARMA"}
@@ -168,7 +180,9 @@ test("throw when adding token with existing symbol", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -196,7 +210,9 @@ test("throw without authorization", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [],
             supported_symbol_pairs: [],
             maker_market_fee: 0.01,

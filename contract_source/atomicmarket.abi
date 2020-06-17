@@ -282,7 +282,15 @@
                     "type": "float64"
                 },
                 {
+                    "name": "minimum_auction_duration",
+                    "type": "uint32"
+                },
+                {
                     "name": "maximum_auction_duration",
+                    "type": "uint32"
+                },
+                {
+                    "name": "auction_reset_duration",
                     "type": "uint32"
                 },
                 {

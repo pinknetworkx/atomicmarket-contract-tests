@@ -219,11 +219,11 @@ test("claim auction with custom marketplaces", async () => {
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [
             {
-                marketplace_name: "mymarket1",
+                marketplace_name: "mymarket1111",
                 creator: "marketowner1"
             },
             {
-                marketplace_name: "mymarket2",
+                marketplace_name: "mymarket2222",
                 creator: "marketowner2"
             }
         ]
@@ -256,8 +256,8 @@ test("claim auction with custom marketplaces", async () => {
                 current_bidder: user2.accountName,
                 claimed_by_seller: false,
                 claimed_by_buyer: false,
-                maker_marketplace: "mymarket1",
-                taker_marketplace: "mymarket2",
+                maker_marketplace: "mymarket1111",
+                taker_marketplace: "mymarket2222",
                 collection_name: "testcollect1",
                 collection_fee: 0.05
             }
@@ -283,8 +283,8 @@ test("claim auction with custom marketplaces", async () => {
             current_bidder: user2.accountName,
             claimed_by_seller: true,
             claimed_by_buyer: false,
-            maker_marketplace: "mymarket1",
-            taker_marketplace: "mymarket2",
+            maker_marketplace: "mymarket1111",
+            taker_marketplace: "mymarket2222",
             collection_name: "testcollect1",
             collection_fee: 0.05
         }

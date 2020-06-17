@@ -48,7 +48,9 @@ test("add first delphi", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -98,7 +100,9 @@ test("add first delphi", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"}
         ],
@@ -124,7 +128,9 @@ test("add second delphi", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -198,7 +204,9 @@ test("add second delphi", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"}
         ],
@@ -230,7 +238,9 @@ test("add second delphi with same delphi pair", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -287,7 +297,9 @@ test("add second delphi with same delphi pair", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"}
         ],
@@ -319,7 +331,9 @@ test("add inverted delphi", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -369,7 +383,9 @@ test("add inverted delphi", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {token_contract: "eosio.token", token_symbol: "8,WAX"}
         ],
@@ -395,7 +411,9 @@ test("throw when listing and settlement symbol are the same", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -447,7 +465,9 @@ test("throw when delphipair name does not exist in delphioracle contract", async
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -477,7 +497,9 @@ test("throw when listing - settlement combination already exists", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -553,7 +575,9 @@ test("throw when settlement symbol is not supported", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -605,7 +629,9 @@ test("throw when not inverted and listing precision is not delphi quote precisio
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -657,7 +683,9 @@ test("throw when not inverted and settlement precision is not delphi base precis
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -709,7 +737,9 @@ test("throw when inverted and listing precision is not delphi base precision", a
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -761,7 +791,9 @@ test("throw when inverted and settlement precision is not delphi quote precision
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -813,7 +845,9 @@ test("throw without authorization", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],

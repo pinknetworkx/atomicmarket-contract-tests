@@ -41,7 +41,9 @@ test("set minimum bid increase", async () => {
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.2,
+        minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
+        auction_reset_duration: 120,
         supported_tokens: [
             {
                 token_contract: "eosio.token",

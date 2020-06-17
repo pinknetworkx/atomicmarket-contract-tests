@@ -54,7 +54,9 @@ test("send first deposit without balance table", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -103,7 +105,9 @@ test("send first deposit of second token", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"}
@@ -159,7 +163,9 @@ test("send deposit when balance table already has a balance for that token", asy
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -214,7 +220,9 @@ test("send deposit from non eosio.token token contract", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"},
                 {token_contract: "karmatoken", token_symbol: "4,KARMA"}
@@ -264,7 +272,9 @@ test("throw when token is not supported (same symbol as supported token)", async
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
@@ -307,7 +317,9 @@ test("throw when memo is invalid", async () => {
             sale_counter: "1",
             auction_counter: "1",
             minimum_bid_increase: 0.1,
+            minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
+            auction_reset_duration: 120,
             supported_tokens: [
                 {token_contract: "eosio.token", token_symbol: "8,WAX"}
             ],
