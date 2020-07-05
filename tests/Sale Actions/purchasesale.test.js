@@ -196,7 +196,7 @@ test("purchase direct sale of single asset", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);
@@ -298,7 +298,7 @@ test("purchase sale when buyer has more balance than sale price", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         },
         {
@@ -424,7 +424,7 @@ test("purchase direct sale of multiple assets", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);
@@ -737,7 +737,7 @@ test("purchase delphi sale", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);
@@ -849,7 +849,7 @@ test("purchase sale with inverted delphi price", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);

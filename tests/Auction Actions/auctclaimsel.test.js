@@ -155,7 +155,7 @@ test("claim auction", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);
@@ -223,7 +223,7 @@ test("claim auction when buyer has already claimed", async () => {
             quantities: ["5.00000000 WAX"]
         },
         {
-            owner: "pink.network",
+            owner: "fees.atomic",
             quantities: ["2.00000000 WAX"]
         }
     ]);

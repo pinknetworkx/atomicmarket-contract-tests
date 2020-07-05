@@ -41,7 +41,7 @@ test("register market", async () => {
     expect(marketplaces).toEqual([
         {
             marketplace_name: "",
-            creator: "pink.network"
+            creator: "fees.atomic"
         },
         {
             marketplace_name: "mymarket1111",
@@ -70,7 +70,7 @@ test("register second market of same creator", async () => {
     expect(marketplaces).toEqual([
         {
             marketplace_name: "",
-            creator: "pink.network"
+            creator: "fees.atomic"
         },
         {
             marketplace_name: "mymarket1111",
@@ -96,7 +96,7 @@ test("register market with name equal to creator name", async () => {
     expect(marketplaces).toEqual([
         {
             marketplace_name: "",
-            creator: "pink.network"
+            creator: "fees.atomic"
         },
         {
             marketplace_name: user1.accountName,

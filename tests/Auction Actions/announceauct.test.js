@@ -786,7 +786,7 @@ test("announce auction for asset that has already been announced as part of a bi
         "atomicmarket": [
             {
                 marketplace_name: "",
-                creator: "pink.network"
+                creator: "fees.atomic"
             }
         ]
     });
@@ -901,7 +901,7 @@ test("announce auction that another account has announced before", async () => {
         "atomicmarket": [
             {
                 marketplace_name: "",
-                creator: "pink.network"
+                creator: "fees.atomic"
             }
         ]
     });

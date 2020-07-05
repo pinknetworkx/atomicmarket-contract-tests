@@ -788,7 +788,7 @@ test("announce sale for asset that has already been announced as part of a bigge
         "atomicmarket": [
             {
                 marketplace_name: "",
-                creator: "pink.network"
+                creator: "fees.atomic"
             }
         ]
     });
@@ -891,7 +891,7 @@ test("announce sale that another account has announced before", async () => {
         "atomicmarket": [
             {
                 marketplace_name: "",
-                creator: "pink.network"
+                creator: "fees.atomic"
             }
         ]
     });
