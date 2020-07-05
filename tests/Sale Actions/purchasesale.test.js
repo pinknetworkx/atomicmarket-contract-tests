@@ -6,6 +6,7 @@ const blockchain = new Blockchain(config);
 const atomicmarket = blockchain.createAccount(`atomicmarket`);
 const atomicassets = blockchain.createAccount(`atomicassets`);
 const delphioracle = blockchain.createAccount('delphioracle');
+const eosio_token = blockchain.createAccount('eosio.token');
 
 const user1 = blockchain.createAccount(`user1`);
 const user2 = blockchain.createAccount(`user2`);
@@ -36,6 +37,8 @@ beforeAll(async () => {
             }
         ]
     });
+
+    eosio_token.setContract(blockchain.contractTemplates['eosio.token']);
 
     delphioracle.setContract(blockchain.contractTemplates[`delphioracle`]);
     await delphioracle.loadFixtures();
@@ -77,6 +80,7 @@ beforeAll(async () => {
 beforeEach(async () => {
     atomicmarket.resetTables();
     atomicassets.resetTables();
+    await eosio_token.resetTables();
 
     await atomicmarket.loadFixtures();
     await atomicassets.loadFixtures();
@@ -102,10 +106,23 @@ beforeEach(async () => {
             ]
         }]
     });
+
+    await eosio_token.loadFixtures("stat", {
+        "WAX": [{
+            supply: "1000.00000000 WAX",
+            max_supply: "1000.00000000 WAX",
+            issuer: "eosio"
+        }]
+    });
+    await eosio_token.loadFixtures("accounts", {
+        "atomicmarket": [{
+            balance: "1000.00000000 WAX"
+        }]
+    });
 });
 
 test("purchase direct sale of single asset", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -130,7 +147,8 @@ test("purchase direct sale of single asset", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -180,10 +198,13 @@ test("purchase direct sale of single asset", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -203,7 +224,7 @@ test("purchase direct sale of single asset", async () => {
 });
 
 test("purchase sale when buyer has more balance than sale price", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -228,7 +249,8 @@ test("purchase sale when buyer has more balance than sale price", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -280,12 +302,15 @@ test("purchase sale when buyer has more balance than sale price", async () => {
             quantities: ["2.00000000 WAX"]
         },
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
-        },
-        {
             owner: user2.accountName,
             quantities: ["100.00000000 WAX"]
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
+        {
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -305,7 +330,7 @@ test("purchase sale when buyer has more balance than sale price", async () => {
 });
 
 test("purchase direct sale of multiple assets", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -350,7 +375,8 @@ test("purchase direct sale of multiple assets", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776", "1099511627777", "1099511627778"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -400,10 +426,13 @@ test("purchase direct sale of multiple assets", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -443,7 +472,7 @@ test("purchase direct sale of multiple assets", async () => {
 });
 
 test("purchase sale with minimal price", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -468,7 +497,8 @@ test("purchase sale with minimal price", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -510,10 +540,12 @@ test("purchase sale with minimal price", async () => {
     expect(sales).toBeUndefined();
 
     const balances = atomicmarket.getTableRowsScoped("balances")["atomicmarket"];
-    expect(balances).toEqual([
+    expect(balances).toBeUndefined();
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["0.00000001 WAX"]
+            balance: "0.00000001 WAX"
         }
     ]);
 
@@ -533,7 +565,7 @@ test("purchase sale with minimal price", async () => {
 });
 
 test("purchase sale with very small price", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -558,7 +590,8 @@ test("purchase sale with very small price", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -604,10 +637,13 @@ test("purchase sale with very small price", async () => {
         {
             owner: "colauthor",
             quantities: ["0.00000002 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["0.00000048 WAX"]
+            balance: "0.00000048 WAX"
         }
     ]);
 
@@ -627,7 +663,7 @@ test("purchase sale with very small price", async () => {
 });
 
 test("purchase delphi sale", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -652,7 +688,8 @@ test("purchase delphi sale", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -702,10 +739,13 @@ test("purchase delphi sale", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -725,7 +765,7 @@ test("purchase delphi sale", async () => {
 });
 
 test("purchase sale with inverted delphi price", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -750,7 +790,8 @@ test("purchase sale with inverted delphi price", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -810,10 +851,13 @@ test("purchase sale with inverted delphi price", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -833,7 +877,7 @@ test("purchase sale with inverted delphi price", async () => {
 });
 
 test("purchase sale with custom marketplaces", async () => {
-    expect.assertions(3);
+    expect.assertions(4);
 
     await atomicassets.loadFixtures("assets", {
         "user1": [
@@ -858,7 +902,8 @@ test("purchase sale with custom marketplaces", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -925,10 +970,13 @@ test("purchase sale with custom marketplaces", async () => {
         {
             owner: "marketowner2",
             quantities: ["1.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 
@@ -983,7 +1031,8 @@ test("throw when trying to purchase own sale", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1131,7 +1180,8 @@ test("throw when purchasing direct sale and delphi median is not 0", async () =>
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1194,7 +1244,8 @@ test("throw when marketplace is invalid", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1257,7 +1308,8 @@ test("throw when delphi median is not found", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1320,7 +1372,8 @@ test("throw when buyer does not have a balance row", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1376,7 +1429,8 @@ test("throw when buyer's balance is not sufficient", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1439,7 +1493,8 @@ test("throw when buyer only has a balance for another token", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -1502,7 +1557,8 @@ test("throw without authorization from buyer", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });

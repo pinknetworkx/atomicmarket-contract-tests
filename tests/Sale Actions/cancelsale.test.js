@@ -91,7 +91,8 @@ test("cancel sale with active offer", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -256,7 +257,8 @@ test("cancel invalid sale without auth - seller does not own asset", async () =>
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });
@@ -319,7 +321,8 @@ test("throw when cancelling active sale without auth", async () => {
                 recipient: atomicmarket.accountName,
                 sender_asset_ids: ["1099511627776"],
                 recipient_asset_ids: [],
-                memo: ""
+                memo: "",
+                ram_payer: user1.accountName
             }
         ]
     });

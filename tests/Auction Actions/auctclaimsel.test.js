@@ -5,6 +5,7 @@ const config = loadConfig("hydra.yml");
 const blockchain = new Blockchain(config);
 const atomicmarket = blockchain.createAccount(`atomicmarket`);
 const atomicassets = blockchain.createAccount(`atomicassets`);
+const eosio_token = blockchain.createAccount('eosio.token');
 
 const user1 = blockchain.createAccount(`user1`);
 const user2 = blockchain.createAccount(`user2`);
@@ -35,11 +36,14 @@ beforeAll(async () => {
             }
         ]
     });
+
+    eosio_token.setContract(blockchain.contractTemplates['eosio.token']);
 });
 
 beforeEach(async () => {
     atomicmarket.resetTables();
     atomicassets.resetTables();
+    await eosio_token.resetTables();
 
     await atomicmarket.loadFixtures();
     await atomicassets.loadFixtures();
@@ -65,10 +69,23 @@ beforeEach(async () => {
             ]
         }]
     });
+
+    await eosio_token.loadFixtures("stat", {
+        "WAX": [{
+            supply: "1000.00000000 WAX",
+            max_supply: "1000.00000000 WAX",
+            issuer: "eosio"
+        }]
+    });
+    await eosio_token.loadFixtures("accounts", {
+        "atomicmarket": [{
+            balance: "1000.00000000 WAX"
+        }]
+    });
 });
 
 test("claim auction", async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await atomicassets.loadFixtures("assets", {
         "atomicmarket": [
@@ -140,16 +157,19 @@ test("claim auction", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 });
 
 test("claim auction when buyer has already claimed", async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await atomicassets.loadFixtures("assets", {
         "atomicmarket": [
@@ -205,16 +225,19 @@ test("claim auction when buyer has already claimed", async () => {
         {
             owner: "pink.network",
             quantities: ["2.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 });
 
 test("claim auction with custom marketplaces", async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await atomicmarket.loadFixtures("marketplaces", {
         "atomicmarket": [
@@ -303,16 +326,19 @@ test("claim auction with custom marketplaces", async () => {
         {
             owner: "marketowner2",
             quantities: ["1.00000000 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["93.00000000 WAX"]
+            balance: "93.00000000 WAX"
         }
     ]);
 });
 
 test("claim auction with minimal bid", async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await atomicassets.loadFixtures("assets", {
         "atomicmarket": [
@@ -376,16 +402,18 @@ test("claim auction with minimal bid", async () => {
     ]);
 
     const balances = atomicmarket.getTableRowsScoped("balances")["atomicmarket"];
-    expect(balances).toEqual([
+    expect(balances).toBeUndefined();
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["0.00000001 WAX"]
+            balance: "0.00000001 WAX"
         }
     ]);
 });
 
 test("claim auction with very small bid", async () => {
-    expect.assertions(2);
+    expect.assertions(3);
 
     await atomicassets.loadFixtures("assets", {
         "atomicmarket": [
@@ -453,10 +481,13 @@ test("claim auction with very small bid", async () => {
         {
             owner: "colauthor",
             quantities: ["0.00000002 WAX"]
-        },
+        }
+    ]);
+
+    const user1_tokens = eosio_token.getTableRowsScoped("accounts")["user1"];
+    expect(user1_tokens).toEqual([
         {
-            owner: user1.accountName,
-            quantities: ["0.00000048 WAX"]
+            balance: "0.00000048 WAX"
         }
     ]);
 });
@@ -600,6 +631,50 @@ test("throw when the auction does not have any bids", async () => {
         actor: user1.accountName,
         permission: "active"
     }])).rejects.toThrow("The auction does not have any bids");
+});
+
+test("throw when the auction has already been claimed by seller", async () => {
+    await atomicassets.loadFixtures("assets", {
+        "atomicmarket": [
+            {
+                asset_id: "1099511627776",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            }
+        ]
+    });
+
+    await atomicmarket.loadFixtures("auctions", {
+        "atomicmarket": [
+            {
+                auction_id: "1",
+                seller: user1.accountName,
+                asset_ids: ["1099511627776"],
+                end_time: 946684500,
+                assets_transferred: true,
+                current_bid: "10.00000000 WAX",
+                current_bidder: user2.accountName,
+                claimed_by_seller: true,
+                claimed_by_buyer: false,
+                maker_marketplace: "",
+                taker_marketplace: "",
+                collection_name: "testcollect1",
+                collection_fee: 0.05
+            }
+        ]
+    });
+
+    await expect(atomicmarket.contract.auctclaimsel({
+        auction_id: "1"
+    }, [{
+        actor: user1.accountName,
+        permission: "active"
+    }])).rejects.toThrow("The auction has already been claimed by the seller");
 });
 
 test("throw without authorization from the auctions seller", async () => {

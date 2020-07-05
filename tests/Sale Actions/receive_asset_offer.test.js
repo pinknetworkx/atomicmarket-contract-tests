@@ -707,7 +707,7 @@ test("do nothing on notifications from fake atomicassets contract", async () => 
                     {"name": "description", "type": "string"}
                 ],
                 "supported_tokens": [
-                    {"token_contract": "eosio.token", "token_symbol": "8,WAX"}
+                    {"contract": "eosio.token", "sym": "8,WAX"}
                 ]
             }
         ]

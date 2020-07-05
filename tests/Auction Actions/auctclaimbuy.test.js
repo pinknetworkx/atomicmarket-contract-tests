@@ -469,6 +469,50 @@ test("throw when the auction is not finished yet", async () => {
     }])).rejects.toThrow("The auction is not finished yet");
 });
 
+test("throw when the auction has already been claimed by buyer", async () => {
+    await atomicassets.loadFixtures("assets", {
+        "atomicmarket": [
+            {
+                asset_id: "1099511627776",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            }
+        ]
+    });
+
+    await atomicmarket.loadFixtures("auctions", {
+        "atomicmarket": [
+            {
+                auction_id: "1",
+                seller: user1.accountName,
+                asset_ids: ["1099511627776"],
+                end_time: 946684500,
+                assets_transferred: true,
+                current_bid: "10.00000000 WAX",
+                current_bidder: user2.accountName,
+                claimed_by_seller: false,
+                claimed_by_buyer: true,
+                maker_marketplace: "",
+                taker_marketplace: "",
+                collection_name: "testcollect1",
+                collection_fee: 0.05
+            }
+        ]
+    });
+
+    await expect(atomicmarket.contract.auctclaimbuy({
+        auction_id: "1"
+    }, [{
+        actor: user2.accountName,
+        permission: "active"
+    }])).rejects.toThrow("The auction has already been claimed by the buyer");
+});
+
 test("throw without authorization from the auctions highest bidder", async () => {
     await atomicassets.loadFixtures("assets", {
         "atomicmarket": [
