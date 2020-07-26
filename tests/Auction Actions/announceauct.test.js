@@ -479,6 +479,44 @@ test("throw when asset_ids is empty", async () => {
     }])).rejects.toThrow("asset_ids needs to contain at least one id");
 });
 
+test("throw when asset_ids contains duplicates", async () => {
+    await atomicassets.loadFixtures("assets", {
+        "user1": [
+            {
+                asset_id: "1099511627776",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            },
+            {
+                asset_id: "1099511627777",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            }
+        ]
+    });
+
+    await expect(atomicmarket.contract.announceauct({
+        seller: user1.accountName,
+        asset_ids: ["1099511627776", "1099511627777", "1099511627776"],
+        starting_bid: "10.00000000 WAX",
+        duration: 600,
+        maker_marketplace: ""
+    }, [{
+        actor: user1.accountName,
+        permission: "active"
+    }])).rejects.toThrow("The asset_ids must not contain duplicates");
+});
+
 test("throw when seller does not own one of the assets", async () => {
     await atomicassets.loadFixtures("assets", {
         "user1": [
