@@ -36,7 +36,7 @@ test("initialize config table", async () => {
 
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
-        version: "1.0.6",
+        version: "1.0.7",
         sale_counter: "1",
         auction_counter: "1",
         minimum_bid_increase: 0.1,

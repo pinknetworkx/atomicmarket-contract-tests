@@ -439,7 +439,7 @@ test("throw when the withdrawal amount is negative", async () => {
     }, [{
         actor: user1.accountName,
         permission: "active"
-    }])).rejects.toThrow("token_to_withdraw must be positive");
+    }])).rejects.toThrow("The quantity to withdraw must be positive");
 });
 
 test("throw without authorization from owner", async () => {
