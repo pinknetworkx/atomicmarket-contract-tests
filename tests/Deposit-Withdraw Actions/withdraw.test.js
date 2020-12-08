@@ -54,8 +54,8 @@ test("withdraw all of the only deposited token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -115,8 +115,8 @@ test("withdraw a part of the only deposited token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -179,8 +179,8 @@ test("withdraw all of one of multiple deposited token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -244,8 +244,8 @@ test("withdraw all of a non eosio.token token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -291,8 +291,8 @@ test("throw when withdrawer does not have a balance row", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -322,8 +322,8 @@ test("throw when withdrawer does not have a balance for the token to withdraw", 
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -359,8 +359,8 @@ test("throw when withdrawer has tokens, but less than the withdrawal", async () 
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -409,8 +409,8 @@ test("throw when the withdrawal amount is negative", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -459,8 +459,8 @@ test("throw without authorization from owner", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,

@@ -45,8 +45,8 @@ test("add first delphi", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -97,8 +97,8 @@ test("add first delphi", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -125,8 +125,8 @@ test("add second delphi", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -201,8 +201,8 @@ test("add second delphi", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -235,8 +235,8 @@ test("add second delphi with same delphi pair", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -294,8 +294,8 @@ test("add second delphi with same delphi pair", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -328,8 +328,8 @@ test("add inverted delphi", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -380,8 +380,8 @@ test("add inverted delphi", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -408,8 +408,8 @@ test("throw when listing and settlement symbol are the same", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -462,8 +462,8 @@ test("throw when delphipair name does not exist in delphioracle contract", async
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -494,8 +494,8 @@ test("throw when listing - settlement combination already exists", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -572,8 +572,8 @@ test("throw when settlement symbol is not supported", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -626,8 +626,8 @@ test("throw when not inverted and listing precision is not delphi quote precisio
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -680,8 +680,8 @@ test("throw when not inverted and settlement precision is not delphi base precis
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -734,8 +734,8 @@ test("throw when inverted and listing precision is not delphi base precision", a
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -788,8 +788,8 @@ test("throw when inverted and settlement precision is not delphi quote precision
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -842,8 +842,8 @@ test("throw without authorization", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,

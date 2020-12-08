@@ -30,8 +30,8 @@ test("add first token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -56,8 +56,8 @@ test("add first token", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -77,8 +77,8 @@ test("add second token of same contract", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -105,8 +105,8 @@ test("add second token of same contract", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -127,8 +127,8 @@ test("add second token of different contract", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -155,8 +155,8 @@ test("add second token of different contract", async () => {
     const config_row = atomicmarket.getTableRowsScoped("config")["atomicmarket"][0];
     expect(config_row).toEqual({
         version: "0.0.0",
-        sale_counter: "1",
-        auction_counter: "1",
+        sale_counter: "0",
+        auction_counter: "0",
         minimum_bid_increase: 0.1,
         minimum_auction_duration: 120,
         maximum_auction_duration: 2592000,
@@ -177,8 +177,8 @@ test("throw when adding token with existing symbol", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -207,8 +207,8 @@ test("throw without authorization", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,

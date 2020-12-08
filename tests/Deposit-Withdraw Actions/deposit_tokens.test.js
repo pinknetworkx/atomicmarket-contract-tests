@@ -51,8 +51,8 @@ test("send first deposit without balance table", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -102,8 +102,8 @@ test("send first deposit of second token", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -160,8 +160,8 @@ test("send deposit when balance table already has a balance for that token", asy
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -217,8 +217,8 @@ test("send deposit from non eosio.token token contract", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -269,8 +269,8 @@ test("throw when token is not supported (same symbol as supported token)", async
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,
@@ -314,8 +314,8 @@ test("throw when memo is invalid", async () => {
     await atomicmarket.loadFixtures("config", {
         "atomicmarket": [{
             version: "0.0.0",
-            sale_counter: "1",
-            auction_counter: "1",
+            sale_counter: "0",
+            auction_counter: "0",
             minimum_bid_increase: 0.1,
             minimum_auction_duration: 120,
             maximum_auction_duration: 2592000,

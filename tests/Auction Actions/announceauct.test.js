@@ -68,6 +68,7 @@ beforeEach(async () => {
 });
 
 test("announce auction of single asset", async () => {
+    expect.assertions(2);
     await atomicassets.loadFixtures("assets", {
         "user1": [{
             asset_id: "1099511627776",
@@ -110,9 +111,15 @@ test("announce auction of single asset", async () => {
             collection_fee: 0.05
         }
     ]);
+
+    const counters = atomicmarket.getTableRowsScoped("counters")["atomicmarket"];
+    expect(counters).toEqual([
+        {counter_name: "auction", counter_value: "2"}
+    ]);
 });
 
 test("announce second auction", async () => {
+    expect.assertions(2);
     await atomicassets.loadFixtures("assets", {
         "user1": [
             {
@@ -191,6 +198,11 @@ test("announce second auction", async () => {
             collection_name: "testcollect1",
             collection_fee: 0.05
         }
+    ]);
+
+    const counters = atomicmarket.getTableRowsScoped("counters")["atomicmarket"];
+    expect(counters).toEqual([
+        {counter_name: "auction", counter_value: "3"}
     ]);
 });
 
@@ -541,7 +553,7 @@ test("throw when seller does not own one of the assets", async () => {
     }, [{
         actor: user1.accountName,
         permission: "active"
-    }])).rejects.toThrow("You do not own at least one of the assets");
+    }])).rejects.toThrow("The specified account does not own at least one of the assets");
 });
 
 test("throw when one of the assets is not transferable", async () => {
@@ -650,7 +662,7 @@ test("throw when there are assets of different collections", async () => {
     }, [{
         actor: user1.accountName,
         permission: "active"
-    }])).rejects.toThrow("You can only list multiple assets from the same collection");
+    }])).rejects.toThrow("The specified asset ids must all belong to the same collection");
 });
 
 test("throw the seller already announced an auction for the single asset", async () => {
@@ -800,8 +812,8 @@ test("announce auction for asset that has already been announced as part of a bi
         "atomicmarket": [
             {
                 version: "0.0.0",
-                sale_counter: "1",
-                auction_counter: "2",
+                sale_counter: "0",
+                auction_counter: "0",
                 minimum_bid_increase: 0.1,
                 minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
@@ -818,6 +830,11 @@ test("announce auction for asset that has already been announced as part of a bi
                 atomicassets_account: "atomicassets",
                 delphioracle_account: "delphioracle"
             }
+        ]
+    });
+    await atomicmarket.loadFixtures("counters",{
+        "atomicmarket": [
+            {"counter_name": "auction", "counter_value": "2"}
         ]
     });
     await atomicmarket.loadFixtures("marketplaces", {
@@ -915,8 +932,8 @@ test("announce auction that another account has announced before", async () => {
         "atomicmarket": [
             {
                 version: "0.0.0",
-                sale_counter: "1",
-                auction_counter: "2",
+                sale_counter: "0",
+                auction_counter: "0",
                 minimum_bid_increase: 0.1,
                 minimum_auction_duration: 120,
                 maximum_auction_duration: 2592000,
@@ -933,6 +950,11 @@ test("announce auction that another account has announced before", async () => {
                 atomicassets_account: "atomicassets",
                 delphioracle_account: "delphioracle"
             }
+        ]
+    });
+    await atomicmarket.loadFixtures("counters",{
+        "atomicmarket": [
+            {"counter_name": "auction", "counter_value": "2"}
         ]
     });
     await atomicmarket.loadFixtures("marketplaces", {

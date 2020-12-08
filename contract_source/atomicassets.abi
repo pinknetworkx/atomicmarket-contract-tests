@@ -3,8 +3,12 @@
     "version": "eosio::abi/1.1",
     "types": [
         {
+            "new_type_name": "ATOMIC_ATTRIBUTE",
+            "type": "variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC"
+        },
+        {
             "new_type_name": "ATTRIBUTE_MAP",
-            "type": "pair_string_variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC[]"
+            "type": "pair_string_ATOMIC_ATTRIBUTE[]"
         },
         {
             "new_type_name": "DOUBLE_VEC",
@@ -818,7 +822,7 @@
             ]
         },
         {
-            "name": "pair_string_variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC",
+            "name": "pair_string_ATOMIC_ATTRIBUTE",
             "base": "",
             "fields": [
                 {
@@ -827,7 +831,7 @@
                 },
                 {
                     "name": "value",
-                    "type": "variant_int8_int16_int32_int64_uint8_uint16_uint32_uint64_float32_float64_string_INT8_VEC_INT16_VEC_INT32_VEC_INT64_VEC_UINT8_VEC_UINT16_VEC_UINT32_VEC_UINT64_VEC_FLOAT_VEC_DOUBLE_VEC_STRING_VEC"
+                    "type": "ATOMIC_ATTRIBUTE"
                 }
             ]
         },
@@ -1071,7 +1075,7 @@
         {
             "name": "burnasset",
             "type": "burnasset",
-            "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Burn an asset\nsummary: '{{nowrap asset_owner}} burns his asset with the id {{nowrap asset_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{asset_owner}} burns his asset with the id {{asset_id}}.\n\nIf there previously were core tokens backed for this asset, these core tokens are transferred to {{asset_owner}}.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{asset_owner}}.\n</div>"
+            "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Burn an asset\nsummary: '{{nowrap asset_owner}} burns his asset with the id {{nowrap asset_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{asset_owner}} burns his asset with the id {{asset_id}}.\n\nIf there previously were tokens backed to this asset, these tokens are added to the balance table entry {{asset_owner}}.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{asset_owner}}.\n</div>"
         },
         {
             "name": "canceloffer",
