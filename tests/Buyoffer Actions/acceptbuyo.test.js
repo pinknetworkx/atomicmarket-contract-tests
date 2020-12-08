@@ -285,6 +285,226 @@ test("accept buyoffer for multiple assets", async () => {
     ]);
 });
 
+test("accept buyoffer with permutation of asset ids in AA offer", async () => {
+    expect.assertions(4);
+
+    await atomicassets.loadFixtures("assets", {
+        "user2": [
+            {
+                asset_id: "1099511627776",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            },
+            {
+                asset_id: "1099511627777",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            }
+        ]
+    });
+
+    await atomicmarket.loadFixtures("buyoffers", {
+        "atomicmarket": [{
+            buyoffer_id: "1",
+            buyer: user1.accountName,
+            recipient: user2.accountName,
+            price: "100.00000000 WAX",
+            asset_ids: ["1099511627776", "1099511627777"],
+            memo: "My memo",
+            maker_marketplace: "",
+            collection_name: "testcollect1",
+            collection_fee: 0.05
+        }]
+    });
+
+    await atomicassets.contract.createoffer({
+        sender: user2.accountName,
+        recipient: atomicmarket.accountName,
+        sender_asset_ids: ["1099511627777", "1099511627776"],
+        recipient_asset_ids: [],
+        memo: "buyoffer"
+    }, [{
+        actor: user2.accountName,
+        permission: "active"
+    }]);
+
+    await atomicmarket.contract.acceptbuyo({
+        buyoffer_id: "1",
+        expected_asset_ids: ["1099511627776", "1099511627777"],
+        expected_price: "100.00000000 WAX",
+        taker_marketplace: ""
+    }, [{
+        actor: user2.accountName,
+        permission: "active"
+    }]);
+
+    const buyoffers = atomicmarket.getTableRowsScoped("buyoffers")["atomicmarket"];
+    expect(buyoffers).toBeUndefined();
+
+    const user1_assets = atomicassets.getTableRowsScoped("assets")[user1.accountName];
+    expect(user1_assets).toEqual([
+        {
+            asset_id: "1099511627776",
+            collection_name: "testcollect1",
+            schema_name: "testschema",
+            template_id: -1,
+            ram_payer: "eosio",
+            backed_tokens: [],
+            immutable_serialized_data: [],
+            mutable_serialized_data: []
+        },
+        {
+            asset_id: "1099511627777",
+            collection_name: "testcollect1",
+            schema_name: "testschema",
+            template_id: -1,
+            ram_payer: "eosio",
+            backed_tokens: [],
+            immutable_serialized_data: [],
+            mutable_serialized_data: []
+        }
+    ]);
+
+    const balances = atomicmarket.getTableRowsScoped("balances")["atomicmarket"];
+    expect(balances).toEqual([
+        {
+            owner: colauthor.accountName,
+            quantities: ["5.00000000 WAX"]
+        },
+        {
+            owner: "fees.atomic",
+            quantities: ["2.00000000 WAX"]
+        }
+    ]);
+
+    const user2_tokens = eosio_token.getTableRowsScoped("accounts")[user2.accountName];
+    expect(user2_tokens).toEqual([
+        {
+            balance: "93.00000000 WAX"
+        }
+    ]);
+});
+
+test("accept buyoffer with permutation of asset ids in expected asset ids", async () => {
+    expect.assertions(4);
+
+    await atomicassets.loadFixtures("assets", {
+        "user2": [
+            {
+                asset_id: "1099511627776",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            },
+            {
+                asset_id: "1099511627777",
+                collection_name: "testcollect1",
+                schema_name: "testschema",
+                template_id: -1,
+                ram_payer: "eosio",
+                backed_tokens: [],
+                immutable_serialized_data: [],
+                mutable_serialized_data: []
+            }
+        ]
+    });
+
+    await atomicmarket.loadFixtures("buyoffers", {
+        "atomicmarket": [{
+            buyoffer_id: "1",
+            buyer: user1.accountName,
+            recipient: user2.accountName,
+            price: "100.00000000 WAX",
+            asset_ids: ["1099511627776", "1099511627777"],
+            memo: "My memo",
+            maker_marketplace: "",
+            collection_name: "testcollect1",
+            collection_fee: 0.05
+        }]
+    });
+
+    await atomicassets.contract.createoffer({
+        sender: user2.accountName,
+        recipient: atomicmarket.accountName,
+        sender_asset_ids: ["1099511627776", "1099511627777"],
+        recipient_asset_ids: [],
+        memo: "buyoffer"
+    }, [{
+        actor: user2.accountName,
+        permission: "active"
+    }]);
+
+    await atomicmarket.contract.acceptbuyo({
+        buyoffer_id: "1",
+        expected_asset_ids: ["1099511627777", "1099511627776"],
+        expected_price: "100.00000000 WAX",
+        taker_marketplace: ""
+    }, [{
+        actor: user2.accountName,
+        permission: "active"
+    }]);
+
+    const buyoffers = atomicmarket.getTableRowsScoped("buyoffers")["atomicmarket"];
+    expect(buyoffers).toBeUndefined();
+
+    const user1_assets = atomicassets.getTableRowsScoped("assets")[user1.accountName];
+    expect(user1_assets).toEqual([
+        {
+            asset_id: "1099511627776",
+            collection_name: "testcollect1",
+            schema_name: "testschema",
+            template_id: -1,
+            ram_payer: "eosio",
+            backed_tokens: [],
+            immutable_serialized_data: [],
+            mutable_serialized_data: []
+        },
+        {
+            asset_id: "1099511627777",
+            collection_name: "testcollect1",
+            schema_name: "testschema",
+            template_id: -1,
+            ram_payer: "eosio",
+            backed_tokens: [],
+            immutable_serialized_data: [],
+            mutable_serialized_data: []
+        }
+    ]);
+
+    const balances = atomicmarket.getTableRowsScoped("balances")["atomicmarket"];
+    expect(balances).toEqual([
+        {
+            owner: colauthor.accountName,
+            quantities: ["5.00000000 WAX"]
+        },
+        {
+            owner: "fees.atomic",
+            quantities: ["2.00000000 WAX"]
+        }
+    ]);
+
+    const user2_tokens = eosio_token.getTableRowsScoped("accounts")[user2.accountName];
+    expect(user2_tokens).toEqual([
+        {
+            balance: "93.00000000 WAX"
+        }
+    ]);
+});
+
 test("accept buyoffer with different taker marketplace", async () => {
     expect.assertions(4);
 
