@@ -1,5 +1,12 @@
 # AtomicMarket Tests
 
+> **This repository is archived.** These Hydra tests cover the v1 contract, whose repository is
+> archived as well. The AtomicMarket contract and its test suite are developed together at
+> [atomicassets/atomicmarket-contract](https://github.com/atomicassets/atomicmarket-contract),
+> where the tests live in
+> [`tests/`](https://github.com/atomicassets/atomicmarket-contract/tree/main/tests) and run against
+> vert.
+
 Tests for the [AtomicMarket](https://github.com/pinknetworkx/atomicmarket-contracts) smart contract written using the [Hydra Testing Framework](https://docs.klevoya.com/hydra/about/getting-started)
 
 -------
